@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Drawing;
+using DxLibDLL;
+
+namespace Nothing
+{
+    public class Loader
+    {
+        private Texture Back,
+            Panel;
+
+        private int nSelect;
+        public void tRecovery()
+        {
+            Back = new Texture(@"System\Texture\Background.png");
+            Panel = new Texture(@"System\Texture\Panel.png");
+        }
+        public void tMainLoader()
+        {
+            Back.Draw(0,0);
+
+            Panel.Draw(105 +(nSelect * 256), 600, new Rectangle(0, 0, 300, 400));
+            Panel.Draw(150,620,new Rectangle(320,0,1370,400));
+          //  Panel.Draw(1050, 50, new Rectangle(0, 420, 830, 300));
+
+
+
+            #region[ キー ]
+
+            if (Program.Keyinput.IsPush(33) || Program.Keyinput.IsPush(36))
+            {
+
+            }
+            else if (Program.Keyinput.IsPush(DX.KEY_INPUT_D))
+            {
+                if (nSelect != 0)
+                    nSelect--;
+            }
+            else if (Program.Keyinput.IsPush(DX.KEY_INPUT_K))
+            {
+                if (nSelect < 3)
+                    nSelect++;
+            }
+            #endregion
+
+
+        }
+
+
+
+    }
+}
